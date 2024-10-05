@@ -47,30 +47,28 @@ public class Solution {
     }
 
     public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        ListNode merged;
-        ListNode node1 = list1;
-        ListNode node2 = list2;
 
-        if(list1.val > list2.val) {
-            merged = list2;
-            node2 = list2.next;
-        }
-        else {
-            merged = list1;
-            node1 = list1.next;
-        }
+        ListNode node = new ListNode();
+        ListNode current = node;
 
-        while (node1.next != null || node2.next != null){
-            if(node1.val < node2.val){
-                
-            } else if (true) {
-
-            }else {
-
+        while(list1 != null && list2 != null){
+            if (list1.val < list2.val){
+                current.next = list1;
+                list1 = list1.next;
+            }else{
+                current.next = list2;
+                list2 = list2.next;
             }
+            current = current.next;
         }
 
-        return null;
+       if (list1 == null){
+           current.next = list2;
+       }else if (list2 == null){
+           current.next = list1;
+       }
+
+       return node.next;
     }
 
 }
